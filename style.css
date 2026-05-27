@@ -1,76 +1,366 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* =========================
+RESET
+========================= */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
-body {
-  font-family: sans-serif;
-  background: #f4f6f8;
-  color: #222;
-  padding: 30px 15px;
+html{
+scroll-behavior:smooth;
 }
 
-.container {
-  max-width: 520px;
-  margin: 0 auto;
-  background: #fff;
-  padding: 30px 20px;
-  border-radius: 18px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-  text-align: center;
+body{
+font-family:"Hiragino Sans","Yu Gothic",sans-serif;
+background:#f5f5f5;
+color:#222;
+line-height:1.8;
 }
 
-h1 {
-  font-size: 28px;
-  margin-bottom: 10px;
+/* =========================
+HERO
+========================= */
+
+.hero{
+background:
+linear-gradient(rgba(0,0,0,0.65),rgba(0,0,0,0.75)),
+url("https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=2070&auto=format&fit=crop");
+
+background-size:cover;
+background-position:center;
+
+color:white;
+padding:110px 20px;
+text-align:center;
 }
 
-.lead {
-  font-size: 14px;
-  color: #666;
-  margin-bottom: 25px;
+.hero-inner{
+max-width:900px;
+margin:0 auto;
 }
 
-.work-list {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+.badge{
+display:inline-block;
+background:white;
+color:#111;
+padding:7px 18px;
+border-radius:999px;
+font-size:14px;
+font-weight:bold;
+margin-bottom:20px;
 }
 
-.work-card {
-  display: block;
-  padding: 18px;
-  border-radius: 14px;
-  background: #f9fafb;
-  text-decoration: none;
-  color: #222;
-  border: 1px solid #e5e7eb;
-  transition: 0.2s;
+h1{
+font-size:40px;
+line-height:1.4;
+font-weight:800;
+letter-spacing:1px;
+margin-bottom:25px;
 }
 
-.work-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+.lead{
+font-size:23px;
+color:rgba(255,255,255,0.92);
+max-width:700px;
+margin:0 auto 40px;
 }
 
-.work-card h2 {
-  font-size: 18px;
-  margin-bottom: 6px;
+/* =========================
+BUTTON
+========================= */
+
+.btn{
+display:inline-block;
+background:#f5c542;
+color:#111;
+padding:17px 42px;
+border-radius:999px;
+text-decoration:none;
+font-weight:bold;
+font-size:18px;
+
+box-shadow:0 10px 30px rgba(245,197,66,0.35);
+
+transition:0.3s;
 }
 
-.work-card p {
-  font-size: 13px;
-  color: #666;
+.btn:hover{
+transform:translateY(-4px);
+opacity:0.9;
+
+box-shadow:0 15px 35px rgba(245,197,66,0.45);
 }
 
-.line-btn {
-  display: block;
-  margin-top: 25px;
-  padding: 15px;
-  border-radius: 999px;
-  background: #06c755;
-  color: #fff;
-  text-decoration: none;
-  font-weight: bold;
+/* =========================
+SECTION
+========================= */
+
+.section{
+max-width:1150px;
+margin:45px auto;
+padding:80px 20px;
+text-align:center;
+
+border-radius:30px;
+}
+
+.section h2{
+font-size:38px;
+margin-bottom:45px;
+font-weight:800;
+}
+
+.bg{
+background:#efefef;
+max-width:none;
+border-radius:0;
+}
+
+/* =========================
+CARD
+========================= */
+
+.cards{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:22px;
+}
+
+.card{
+background:white;
+border-radius:22px;
+padding:35px 20px;
+
+font-size:18px;
+font-weight:bold;
+
+box-shadow:0 8px 30px rgba(0,0,0,0.06);
+
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-6px);
+}
+
+/* =========================
+LIST
+========================= */
+
+.list{
+max-width:760px;
+margin:0 auto;
+list-style:none;
+text-align:left;
+}
+
+.list li{
+background:white;
+margin-bottom:14px;
+padding:18px 22px;
+border-radius:14px;
+
+border-left:5px solid #111;
+
+box-shadow:0 5px 20px rgba(0,0,0,0.05);
+}
+
+/* =========================
+PRICE
+========================= */
+
+.price-wrap{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:24px;
+}
+
+.price-card{
+background:white;
+padding:40px 24px;
+border-radius:24px;
+
+box-shadow:0 10px 30px rgba(0,0,0,0.08);
+
+transition:0.3s;
+}
+
+.price-card:hover{
+transform:translateY(-5px);
+}
+
+.price-card.main{
+background:#111;
+color:white;
+transform:scale(1.05);
+}
+
+.price-card.main .price{
+color:#f5c542;
+}
+
+.price-card h3{
+font-size:24px;
+margin-bottom:15px;
+}
+
+.price{
+font-size:36px;
+font-weight:800;
+margin-bottom:18px;
+}
+
+/* =========================
+STEPS
+========================= */
+
+.steps{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:20px;
+}
+
+.steps div{
+background:white;
+padding:35px 20px;
+border-radius:20px;
+font-weight:bold;
+
+box-shadow:0 8px 25px rgba(0,0,0,0.06);
+}
+
+.steps span{
+display:block;
+font-size:30px;
+color:#f5c542;
+margin-bottom:12px;
+}
+
+/* =========================
+CTA
+========================= */
+
+.cta{
+background:linear-gradient(135deg,#111,#222);
+color:white;
+text-align:center;
+padding:100px 20px;
+}
+
+.cta h2{
+font-size:38px;
+margin-bottom:15px;
+}
+
+.cta p{
+margin-bottom:35px;
+font-size:17px;
+}
+
+/* =========================
+FOOTER
+========================= */
+
+footer{
+background:black;
+color:white;
+text-align:center;
+padding:22px;
+letter-spacing:1px;
+}
+
+/* =========================
+MOBILE
+========================= */
+
+@media (max-width:768px){
+
+.hero{
+padding:90px 20px;
+}
+
+h1{
+font-size:30px;
+}
+
+.lead{
+font-size:16px;
+}
+
+.section{
+padding:60px 20px;
+margin:0;
+border-radius:0;
+}
+
+.section h2{
+font-size:24px;
+line-height:1.5;
+}
+
+.cards,
+.price-wrap,
+.steps{
+grid-template-columns:1fr;
+}
+
+.card{
+font-size:15px;
+padding:24px 12px;
+
+/* スマホで1行 */
+white-space:nowrap;
+}
+
+.price-card.main{
+transform:none;
+}
+
+.btn{
+width:90%;
+max-width:320px;
+}
+
+.cta h2{
+font-size:28px;
+}
+
+}
+
+.hero-buttons{
+display:flex;
+justify-content:center;
+gap:16px;
+flex-wrap:wrap;
+}
+
+.sub-btn{
+background:white;
+color:#111;
+box-shadow:none;
+}
+
+.section-label{
+color:#f5c542;
+font-size:14px;
+font-weight:bold;
+letter-spacing:3px;
+margin-bottom:10px;
+}
+
+.section-label.light{
+color:#f5c542;
+}
+
+.plan-tag{
+display:inline-block;
+background:#f5c542;
+color:#111;
+padding:4px 12px;
+border-radius:999px;
+font-size:12px;
+font-weight:bold;
+margin-bottom:14px;
 }
