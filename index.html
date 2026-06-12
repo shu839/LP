@@ -1,38 +1,330 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>制作実績</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LP制作実績 | ランディングページ制作</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+     :root {
+  --black:   #0d0d0d;
+  --black2:  #1a1a1a;
+  --black3:  #242424;
+  --yellow:  #f5c800;
+  --white:   #ffffff;
+  --line:    #06c755;
+  --line-dk: #059b42;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+  line-height: 1.6;
+}
+
+/* HEADER */
+header {
+  background: var(--black2);
+  border-bottom: 2px solid var(--yellow);
+  padding: 18px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.logo {
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--yellow);
+}
+.logo span { color: var(--white); }
+
+/* HERO */
+.hero {
+  background: var(--black2);
+  text-align: center;
+  padding: 64px 24px 56px;
+  border-bottom: 1px solid #2a2a2a;
+}
+.hero-label {
+  display: inline-block;
+  background: var(--yellow);
+  color: var(--black);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  padding: 4px 14px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+.hero h1 {
+  font-size: clamp(1.7rem, 5vw, 2.8rem);
+  font-weight: 900;
+  line-height: 1.25;
+  margin-bottom: 16px;
+}
+.hero h1 em {
+  color: var(--yellow);
+  font-style: normal;
+}
+.hero p {
+  color: #aaa;
+  font-size: 0.9rem;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+/* WORKS */
+.works {
+  padding: 56px 24px 64px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.section-title {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--yellow);
+  text-transform: uppercase;
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.section-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: #2a2a2a;
+}
+
+.card-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 768px) {
+  .card-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.card {
+  background: var(--black3);
+  border: 1px solid #2e2e2e;
+  border-radius: 6px;
+  overflow: hidden;
+  transition: border-color 0.2s, transform 0.2s;
+  display: flex;
+  flex-direction: column;
+}
+.card:hover {
+  border-color: var(--yellow);
+  transform: translateY(-3px);
+}
+
+/* PC のみサムネ表示 */
+.card-preview {
+  display: none;
+}
+@media (min-width: 768px) {
+  .card-preview {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-bottom: 1px solid #2e2e2e;
+    pointer-events: none;
+    overflow: hidden;
+    position: relative;
+  }
+  .card-preview iframe {
+    width: 200%;
+    height: 200%;
+    transform: scale(0.5);
+    transform-origin: top left;
+    border: none;
+    pointer-events: none;
+  }
+}
+
+.card-body {
+  padding: 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.card-tag {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--yellow);
+  text-transform: uppercase;
+}
+.card-title {
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 1.35;
+  color: var(--white);
+}
+.card-desc {
+  font-size: 0.8rem;
+  color: #999;
+  line-height: 1.55;
+  flex: 1;
+}
+.card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 14px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--yellow);
+  text-decoration: none;
+  letter-spacing: 0.05em;
+}
+.card-link::after {
+  content: '→';
+  transition: transform 0.15s;
+}
+.card:hover .card-link::after {
+  transform: translateX(4px);
+}
+
+/* CTA */
+.cta-section {
+  background: var(--black2);
+  border-top: 1px solid #2a2a2a;
+  border-bottom: 1px solid #2a2a2a;
+  padding: 56px 24px;
+  text-align: center;
+}
+.cta-section h2 {
+  font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+  font-weight: 900;
+  margin-bottom: 10px;
+}
+.cta-section h2 em {
+  color: var(--yellow);
+  font-style: normal;
+}
+.cta-section p {
+  font-size: 0.85rem;
+  color: #aaa;
+  margin-bottom: 32px;
+}
+
+.btn-line {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--line);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 800;
+  text-decoration: none;
+  padding: 16px 36px;
+  border-radius: 4px;
+  letter-spacing: 0.05em;
+  transition: background 0.2s, transform 0.15s;
+  box-shadow: 0 4px 20px rgba(6,199,85,0.35);
+}
+.btn-line:hover {
+  background: var(--line-dk);
+  transform: translateY(-2px);
+}
+.btn-line svg {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+}
+
+/* FOOTER */
+footer {
+  padding: 28px 24px;
+  text-align: center;
+  font-size: 0.72rem;
+  color: #555;
+}
+  </style>
 </head>
 <body>
 
-  <div class="container">
-    <h1>制作実績</h1>
-    <p class="lead">これまでに制作したLPの試作品をご覧いただけます。</p>
+  <header>
+    <div class="logo">LP<span>制作</span></div>
+  </header>
 
-    <div class="work-list">
-      <a href="https://shu839.github.io/test3/" class="work-card" target="_blank">
-        <h2>ナイトワーク系LP</h2>
-        <p>求人・集客向けのランディングページ</p>
-      </a>
+  <section class="hero">
+    <div class="hero-label">Portfolio</div>
+    <h1>成果につながる<br><em>LP制作実績</em></h1>
+    <p>これまでに制作したランディングページの試作品をご覧いただけます。</p>
+  </section>
 
-      <a href="https://shu839.github.io/test5/" class="work-card" target="_blank">
-        <h2>建築会社向けLP</h2>
-        <p>問い合わせ獲得を目的としたLP</p>
-      </a>
+  <section class="works">
+    <div class="section-title">Works</div>
+    <div class="card-grid">
 
-      <a href="https://shu839.github.io/test4/" class="work-card" target="_blank">
-        <h2>学習塾向けLP</h2>
-        <p>体験授業・資料請求向けのLP</p>
-      </a>
+      <div class="card">
+        <div class="card-preview">
+          <iframe src="https://shu839.github.io/test3/" scrolling="no" tabindex="-1" aria-hidden="true"></iframe>
+        </div>
+        <div class="card-body">
+          <div class="card-tag">Night Work</div>
+          <div class="card-title">ナイトワーク系LP</div>
+          <div class="card-desc">求人・集客向けのランディングページ。夜職の採用訴求に特化したデザイン。</div>
+          <a class="card-link" href="https://shu839.github.io/test3/" target="_blank" rel="noopener">実際に見る</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-preview">
+          <iframe src="https://shu839.github.io/test5/" scrolling="no" tabindex="-1" aria-hidden="true"></iframe>
+        </div>
+        <div class="card-body">
+          <div class="card-tag">Construction</div>
+          <div class="card-title">建築会社向けLP</div>
+          <div class="card-desc">問い合わせ獲得を目的としたLP。信頼感・実績訴求を重視したレイアウト。</div>
+          <a class="card-link" href="https://shu839.github.io/test5/" target="_blank" rel="noopener">実際に見る</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-preview">
+          <iframe src="https://shu839.github.io/test4/" scrolling="no" tabindex="-1" aria-hidden="true"></iframe>
+        </div>
+        <div class="card-body">
+          <div class="card-tag">Education</div>
+          <div class="card-title">学習塾向けLP</div>
+          <div class="card-desc">体験授業・資料請求向けのLP。保護者への安心感と成績向上訴求を両立。</div>
+          <a class="card-link" href="https://shu839.github.io/test4/" target="_blank" rel="noopener">実際に見る</a>
+        </div>
+      </div>
+
     </div>
+  </section>
 
-    <a href="https://lin.ee/Pe8BOFQ" class="line-btn" target="_blank">
+  <section class="cta-section">
+    <h2>LP制作の<em>ご相談・お見積もり</em>は<br>お気軽にどうぞ</h2>
+    <p>まずはLINEで気軽にメッセージください。</p>
+    <a class="btn-line" href="https://lin.ee/Pe8BOFQ" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2C6.477 2 2 6.12 2 11.2c0 2.7 1.3 5.12 3.35 6.77-.15.53-.95 3.27-1 3.5 0 0-.02.17.09.24.11.07.23.03.23.03.3-.04 3.48-2.3 4.03-2.68.74.1 1.51.16 2.3.16 5.523 0 10-4.12 10-9.2S17.523 2 12 2z"/>
+      </svg>
       LINEで相談する
     </a>
-  </div>
+  </section>
+
+  <footer>
+    &copy; 2025 LP制作実績
+  </footer>
 
 </body>
 </html>
